@@ -2,7 +2,7 @@
     width: 100%;
     max-width: var(--max-width);
     margin: auto;
-    padding: 40px 20px;
+    padding: 0px 20px;
     text-align: center;
 }
 .protocolTitle {
@@ -12,5 +12,5 @@
 .protocolInfo {
     max-width: 500px;
     margin: auto;
-    color: var(--theme-dimLight);
+    color: var(--theme-light);
 }

@@ -8,8 +8,8 @@ const NavBar = () => {
     <header className={style["navigation-header"]}>
       <nav className={style["navigation"]}>
         <div className={style["logo"]}>
-          <img src={Logo} alt="DappsHub" className={style["wallet-logo"]}  />
-          <span className={style["wallet-connect"]}>OnchainDapps</span>
+          <img src={Logo} alt="BlockchainDapps" className={style["wallet-logo"]}  />
+          <span className={style["wallet-connect"]}>BlockchainDapps</span>
         </div>
         <div className={style["button-container"]}>
           <button

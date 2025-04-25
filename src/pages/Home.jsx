@@ -12,7 +12,7 @@ const Home = () => {
     <>
         <NavBar />
         <Hero />
-        <Count />
+        {/* <Count /> */}
         <Protocols />
         <GetStarted />
         <Supported />

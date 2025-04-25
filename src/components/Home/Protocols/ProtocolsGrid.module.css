@@ -18,17 +18,19 @@
     align-items: center;
     cursor: pointer;
     transition: .3s ease-in-out;
-    background: linear-gradient(45deg, #083270, #13f287, #5ca0de);
+    background: linear-gradient(45deg, #8e2de2, #00ffe0, #8e2de2);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-fill-color: transparent;
-    border: 1px ridge #00924b;
+    border: 1px ridge #00ffe0;
 }
 .parent > div:hover {
-}
+    transform: scale(1.03);
+    filter: brightness(1.2);
+  }
     
-    .div1 { grid-area: 1 / 1 / 2 / 2; }
+    /* .div1 { grid-area: 1 / 1 / 2 / 2; }
     .div2 { grid-area: 1 / 2 / 2 / 3; }
     .div3 { grid-area: 1 / 3 / 2 / 4; }
     .div4 { grid-area: 1 / 4 / 2 / 5; }
@@ -43,7 +45,7 @@
     .div13 { grid-area: 4 / 4 / 5 / 5; }
     .div14 { grid-area: 5 / 1 / 6 / 2; }
     .div15 { grid-area: 5 / 2 / 6 / 3; }
-    .div16 { grid-area: 5 / 3 / 6 / 5; }
+    .div16 { grid-area: 5 / 3 / 6 / 5; } */
 
     @media screen and (max-width: 1024px) {
         .parent > div {
