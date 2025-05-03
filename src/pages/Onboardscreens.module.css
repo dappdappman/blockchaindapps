@@ -1,0 +1,14 @@
+.onboardContainer {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    padding-top: 10vh;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(8px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100vh;
+}

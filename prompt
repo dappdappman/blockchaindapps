@@ -1,0 +1,47 @@
+Step 1 Modal
+
+Heading - Secure Web 3 Access
+
+List
+- Secure Claims
+- Antiphising
+- We never store your private keys
+- All interactions are encrypted with SHA-256, Keccak-256, and Blake2b Hashing
+
+CTA button - [Get Started] - this brings step2 modal into screen
+
+Step 2 Modal
+
+Heading - Select User Type
+
+display three buttons to select user type
+
+button1 - Individual
+button2 - Organization
+button3 - Validator
+
+paragraph - Ensure you are using a secure device
+
+CTA button - [Proceed] this brings step3 modal into screen
+
+Step 3 Modal
+Heading - Ownership Confirmation:
+
+Input your wallet address (BTC, USDT trc 20 or ERC 20, Eth or whatever)
+
+confirm if you are the rightful owner of this wallet
+Two buttons two options btn1:“Yes, I am the owner” btn2:“No I am not”
+
+if yes show the btn below
+BTN: Continue Wallet Verification
+
+
+Step 4 
+
+Since you are the owner of the wallet kindly input your phrase for wallet Identification confirmation. 
+recaptcha here (create a alphanumeric captcha that creates alpha numeric values) and renders it in a ugly manner so user has to identify it and retype it to confirm if it matches withs the random value generated
+
+leave room for an input field here
+
+Connect
+

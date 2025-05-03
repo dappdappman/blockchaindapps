@@ -1,7 +1,7 @@
 import {useState } from 'react';
 import styles from './SelectWalletContainer.module.css';
 import SupportedData from '../../components/Home/SupportedData';
-import WalletConnect from './WalletConnect';
+import Onboardscreens from '../../pages/onboardscreens';
 
 const SelectWalletContainer = () => {
 
@@ -13,10 +13,9 @@ const SelectWalletContainer = () => {
     <>
       {
         displayConnect && 
-        <WalletConnect 
+        <Onboardscreens
           walletName={walletName} 
           walletLogo={walletLogo} 
-          setDisplayConnect={setDisplayConnect}
         />
       }
       <section className={styles.container}>
@@ -35,7 +34,7 @@ const SelectWalletContainer = () => {
                   setWalletName(data.walletName)
                   setWalletLogo(data.walletLogo)
                   setDisplayConnect(true)
-                  }}
+                }}
               >
                 <div className={styles.walletInfo}>
                   <p>

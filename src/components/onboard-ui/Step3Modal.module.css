@@ -1,0 +1,112 @@
+.container {
+    cursor: pointer;
+    border-radius: 16px;
+    background: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    max-width: 500px;
+    height: fit-content;
+    padding: 30px;
+    color: var(--theme-light);
+    transition: 0.4s ease-in-out;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 255, 224, 0.5);
+    backdrop-filter: blur(8px);
+  }
+  .iconContainer {
+    text-align: center;
+  }
+.icon {
+    animation: flipScale 10s ease-in-out infinite alternate;
+}
+
+@keyframes flipScale {
+  0% {
+    transform: scale(1) scaleX(1);
+  }
+  50% {
+    transform: scale(1.1) scaleX(-1); /* flip + scale */
+  }
+  100% {
+    transform: scale(1) scaleX(1); /* return to normal */
+  }
+}
+  .heading {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--theme-light);
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .listStyle {
+    list-style-type: disc;
+    list-style-position: inside;
+    color: #ccc;
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+  .listStyle li::marker {
+    color: cyan;
+  }
+  .buttonGroupStyle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .optionButton {
+    background: none;
+    border: 1px solid rgb(0, 255, 255, .2);
+    border-radius: 8px;
+    padding: 10px;
+    color: rgb(0, 255, 255, .6);
+    outline: none;
+    cursor: pointer;  
+    font-weight: 800;
+    font-size: 16px;
+  }
+  .optionSelectedButton {
+    background: rgb(0, 255, 255, .2);
+    border: 1px solid rgb(0, 255, 255, .2);
+    border-radius: 8px;
+    padding: 10px;
+    color: rgb(0, 255, 255, .6);
+    outline: none;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+  }
+  .text {
+    color: #ccc;
+    font-size: 15px;
+  }
+  .textRed {
+    color: rgba(255, 0, 93, 0.7);
+    font-size: 10px;
+  }
+  .buttonStyle {
+    padding: 16px;
+    border-radius: 8px;
+    background-color: rgb(0, 255, 255, .9);
+    transition: ease-in-out .3s;
+    outline: none;
+    border: none;
+    color: black;
+    font-weight: 800;
+    font-size: 16px;
+    cursor: pointer;
+  }
+ .buttonStyle:hover {
+    background-color: rgb(0, 255, 255, .8);
+ }
+ .addressInput {
+    border: none;
+    outline: none;
+    padding: 12px;
+    color: #bbb;
+    font-size: 15px;
+    border: 1px solid #363636;
+    border-radius: 8px;
+ }

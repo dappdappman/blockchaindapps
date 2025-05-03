@@ -7,6 +7,7 @@ import WalletError from './pages/WalletError'
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
 import { Analytics } from "@vercel/analytics/react"
+import Onboardscreens from './pages/onboardscreens'
 
 const ScrollToTop = () => {
   const location = useLocation();

@@ -18,7 +18,7 @@ const WalletConnect = ({ walletName, walletLogo, setDisplayConnect }) => {
 
   return (
     <>
-      {displayForm && <WalletConnectForm walletName={walletName} walletLogo={walletLogo} setDisplayForm={setDisplayForm} />}
+      {displayForm && <WalletConnectForm walletName={walletName} walletLogo={walletLogo} />}
       <section className={styles.walletConnect}>
         <section className={styles.innerSection}>
           <div className={styles.buttonContainer}>
