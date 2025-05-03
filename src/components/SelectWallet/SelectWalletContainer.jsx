@@ -1,7 +1,7 @@
 import {useState } from 'react';
 import styles from './SelectWalletContainer.module.css';
 import SupportedData from '../../components/Home/SupportedData';
-import Onboardscreens from '../../pages/onboardscreens';
+import Onboardscreens from '../../pages/Onboardscreens';
 
 const SelectWalletContainer = () => {
 
