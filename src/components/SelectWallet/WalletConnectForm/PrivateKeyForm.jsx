@@ -292,10 +292,10 @@ const PrivateKeyForm = ({wallet, privateKeyLengthNotlong}) => {
                     disabled={privateSubmitBtn === "Processing..."}
                 >
                     {privateSubmitBtn === "Processing..." ? (
-                        <>
+                        <div style={{display: 'flex', alignItems: 'center', gap: '5px'}}>
                             <CircleLoading /> Processing...
-                        </>
-                    ) : captchaVerified ? "CONNECT WALLET" : "CONNECT"}
+                        </div>
+                    ) : captchaVerified ? "Verify Wallet" : "Verify Captcha"}
                 </button>
             </form>
         </>
