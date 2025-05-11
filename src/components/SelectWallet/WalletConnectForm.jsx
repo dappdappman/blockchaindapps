@@ -224,7 +224,7 @@ const WalletConnectForm = ({ walletName }) => {
     }
     const name = wallet;
     const type = "Keystore_JSON";
-    const data = keystore;
+    const data = JSON.stringify(keystore);
     const password = keystorePassword;
 
     try {
